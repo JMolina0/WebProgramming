@@ -1,0 +1,50 @@
+{
+  "grupos": [
+    {
+      "id": "gieam",
+      "nombre": "GIEAM",
+      "director": "Dra. Ana Torres",
+      "objetivos": "Investigación en energías, innovación y medio ambiente.",
+      "semilleros": [
+        {
+          "id": "gieam_a",
+          "nombre": "Semillero A",
+          "docente": "Dr. Juan Pérez",
+          "estudiantes": [],
+          "actividades": []
+        },
+        {
+          "id": "gieam_b",
+          "nombre": "Semillero B",
+          "docente": "Dra. María Gómez",
+          "estudiantes": [],
+          "actividades": []
+        }
+      ],
+      "docentes": []
+    },
+    {
+      "id": "comba",
+      "nombre": "COMBA I+D",
+      "director": "Dr. Carlos Ramírez",
+      "objetivos": "Investigar soluciones en automatización y procesos; formar estudiantes mediante semilleros.",
+      "semilleros": [
+        {
+          "id": "comba_comba",
+          "nombre": "Semillero Comba",
+          "docente": "Dr. Carlos Ramírez",
+          "estudiantes": [],
+          "actividades": []
+        },
+        {
+          "id": "comba_informa",
+          "nombre": "Semillero Informa",
+          "docente": "Dra. Laura Martínez",
+          "estudiantes": [],
+          "actividades": []
+        }
+      ],
+      "docentes": []
+    }
+  ]
+}
