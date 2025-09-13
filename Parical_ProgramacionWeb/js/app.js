@@ -1,4 +1,4 @@
-/* app.js - lógica completa */
+
 const LIST_KEY = 'prototipo_grupos_v1';
 
 const btnCargar = document.getElementById('btnCargar');
@@ -27,7 +27,7 @@ const btnExport = document.getElementById('btnExport');
 let gruposData = [];      // datos actuales (cargados o desde localStorage)
 let activoGrupoId = null; // id del grupo seleccionado
 
-// ------- UTIL: Simula POST a un servidor externo (JSONPlaceholder) ------
+// Simula POST ------
 async function simulatePost(url, body) {
   try {
     const res = await fetch(url, {
@@ -42,7 +42,7 @@ async function simulatePost(url, body) {
   }
 }
 
-// ------- Cargar datos iniciales (desde localStorage o data/grupos.json) ------
+// ------- Cargar datos iniciales ------
 async function loadInitialData() {
   const raw = localStorage.getItem(LIST_KEY);
   if (raw) {
@@ -75,7 +75,6 @@ function saveToLocal() {
   localStorage.setItem(LIST_KEY, JSON.stringify(gruposData));
 }
 
-// ------- Render listado de grupos (sidebar) ------
 function renderGroupList() {
   listaGrupos.innerHTML = '';
   gruposData.forEach(g => {
@@ -92,7 +91,7 @@ function renderGroupList() {
   });
 }
 
-// ------- Seleccionar grupo y mostrar detalle ------
+// - Seleccionar grupo y mostrar detalle -
 function selectGroup(id) {
   activoGrupoId = id;
   const g = gruposData.find(x => x.id === id);
@@ -161,7 +160,6 @@ function selectGroup(id) {
     actividadesContainer.innerHTML = '<div class="small text-muted">(No hay actividades registradas)</div>';
   }
 
-  // Poblar selects de formularios según el grupo seleccionado o global
   populateFormSelects();
 }
 
@@ -176,10 +174,8 @@ function populateFormSelects() {
     selectGrupoDoc.appendChild(opt);
   });
 
-  // selectSemDoc depende del grupo seleccionado en ese select
   selectSemDoc.innerHTML = '<option value="">(Opcional) seleccionar semillero</option>';
 
-  // selectSemEstudiante -> solo semilleros COMBA
   selectSemEstudiante.innerHTML = '<option value="">Seleccione semillero (COMBA)</option>';
   const comba = gruposData.find(g => g.id === 'comba');
   if (comba) {
@@ -191,7 +187,6 @@ function populateFormSelects() {
     });
   }
 
-  // selectSemActividad -> semilleros del grupo activo (si hay)
   selectSemActividad.innerHTML = '<option value="">Seleccione semillero</option>';
   const ag = gruposData.find(g => g.id === activoGrupoId) || gruposData[0];
   if (ag && ag.semilleros) {
@@ -204,7 +199,6 @@ function populateFormSelects() {
   }
 }
 
-// Cuando se cambia el grupo en el formulario de docente -> actualizar semilleros del select
 selectGrupoDoc.addEventListener('change', () => {
   selectSemDoc.innerHTML = '<option value="">(Opcional) seleccionar semillero</option>';
   const gid = selectGrupoDoc.value;
@@ -360,7 +354,6 @@ btnExport.addEventListener('click', () => {
   alert('Datos exportados a consola (abre DevTools).');
 });
 
-// ------- Inicialización ------
 (async function init() {
   await loadInitialData();
   renderGroupList();
@@ -370,3 +363,4 @@ btnExport.addEventListener('click', () => {
   }
   populateFormSelects();
 })();
+
